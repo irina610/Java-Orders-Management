@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS Client (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Product (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    stock INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `Order` (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clientEmail VARCHAR(100) NOT NULL,
+    productName VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clientEmail VARCHAR(100) NOT NULL,
+    productName VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    totalPrice DECIMAL(10,2) NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX (clientEmail) -- Creăm index pentru performanță
+);
+
